@@ -82,3 +82,9 @@
     transform: scaleX(1);
     /*transform-origin: bottom left;*/
 }
+
+.btn-primary {
+    --bs-btn-bg: #26523b;
+    --bs-btn-hover-bg: #234634;
+    --bs-btn-active-bg: #234634;
+}
