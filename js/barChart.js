@@ -26,47 +26,29 @@ async function createChart() {
     const barChart = document.getElementById("barChart");
 
     const myChart = new Chart(barChart, {
-        type: "bar",
-        data: {
-          labels: data.conditions,
-          datasets: [
-            {
-              label: data.conditions[0],
-              data: [data.avgChanges[0], null, null, null, null], // Only first value shown
-              backgroundColor: "rgba(66, 133, 244, 0.2)",
-              borderColor: "rgba(66, 133, 244, 1)",
-              borderWidth: 1,
-            },
-            {
-              label: data.conditions[1],
-              data: [null, data.avgChanges[1], null, null, null], // Only second value shown
-              backgroundColor: "rgba(234, 67, 53, 0.2)",
-              borderColor: "rgba(234, 67, 53, 1)",
-              borderWidth: 1,
-            },
-            {
-              label: data.conditions[2],
-              data: [null, null, data.avgChanges[2], null, null], // Only third value shown
-              backgroundColor: "rgba(251, 188, 4, 0.2)",
-              borderColor: "rgba(251, 188, 4, 1)",
-              borderWidth: 1,
-            },
-            {
-              label: data.conditions[3],
-              data: [null, null, null, data.avgChanges[3], null], // Only fourth value shown
-              backgroundColor: "rgba(52, 168, 83, 0.2)",
-              borderColor: "rgba(52, 168, 83, 1)",
-              borderWidth: 1,
-            },
-            {
-              label: data.conditions[4],
-              data: [null, null, null, null, data.avgChanges[4]], // Only fifth value shown
-              backgroundColor: "rgba(255, 109, 1, 0.2)",
-              borderColor: "rgba(255, 109, 1, 1)",
-              borderWidth: 1,
-            }
-          ]
-        },
+      type: "bar",
+      data: {
+        labels: data.conditions, // x-axis labels
+        datasets: [{
+            label: 'Average Change in Plant Length (cm)',
+            data: data.avgChanges, // y-axis data
+            backgroundColor: [
+                "rgba(66, 133, 244, 0.2)",
+                "rgba(234, 67, 53, 0.2)",
+                "rgba(251, 188, 4, 0.2)",
+                "rgba(52, 168, 83, 0.2)",
+                "rgba(255, 109, 1, 0.2)"
+            ],
+            borderColor: [
+                "rgba(66, 133, 244, 1)",
+                "rgba(234, 67, 53, 1)",
+                "rgba(251, 188, 4, 1)",
+                "rgba(52, 168, 83, 1)",
+                "rgba(255, 109, 1, 1)"
+            ],
+            borderWidth: 1
+        }]
+      },
       options: {
           responsive: true,            // re-size based on screen size
           maintainAspectRatio: false,
@@ -86,7 +68,9 @@ async function createChart() {
                   },
                   grid: {
                       color: '#6c767e'
-                  }
+                  },
+                  barPercentage: 1.0, // Make bars fill the category width
+                  categoryPercentage: 1.0 // Make categories fill the available space
               },
               y: {
                   title: {
