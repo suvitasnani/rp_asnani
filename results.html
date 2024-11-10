@@ -3,29 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fetch & Graph CSV Data</title>
+    <title>Results - Research Project Website</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"/>
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="chart.css" />
+    <link rel="stylesheet" href="styles.css" />
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/barChart.js" defer></script>
-
   </head>
-  <body>
-    <section class="chartjs-sample">
-        <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
-            <canvas id="barChart"></canvas>
+
+  <body class="body">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark nb-background-color">
+      <!-- lg = large breakpoint, navbar-light = make text dark-->
+      <div class="container">
+        <a href="index.html" class="navbar-brand">
+          <img
+            src="img/green-leaf-icon.png"
+            alt="Green Leaf"
+            class="d-inline-block align-text-top"
+            style="width: 50px"
+          />
+        </a>
+
+        <!-- Hamburger Menu Button-->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collaspsible navbar menu with custom hover underline CSS animation-->
+        <div class="collapse navbar-collapse" id="navmenu">
+          <!-- Links to hamburder menu button -->
+          <ul class="navbar-nav ms-auto">
+            <!-- ms-auto provides auto margin -->
+            <li class="nav-item">
+              <a
+                href="index.html"
+                class="nav-link hover-underline-animation nbMenuItem"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="authors.html"
+                class="nav-link hover-underline-animation nbMenuItem"
+                >Authors</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="procedure.html"
+                class="nav-link hover-underline-animation nbMenuItem"
+                >Procedure</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="results.html"
+                class="nav-link hover-underline-animation nbMenuItem"
+                >Results</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
+
+    <section class="results">
+      <div class="container">
+          <br>
+          <h1 class="text-center about-team">Results</h1>
+          <hr><br>
+      </div>
+  </section>
+
+    <section class="chartjs-sample">
+      <div
+        class="container d-flex overflow-hidden bg-light rounded-4"
+        id="chart-wrapper"
+      >
+        <canvas id="barChart"></canvas>
+      </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="p-5 footer text-light text-center position-relative">
+      <div class="container">
+        <p class="lead">Suvit Asnani SE 2024-2025 Research Project Website</p>
+        <a
+          href="#"
+          class="position-absolute bottom-0 end-0 p-5"
+          style="margin-bottom: 25px"
+        >
+          <i class="bi bi-arrow-up-circle h2 icon-white"></i>
+        </a>
+        <p>All Stock Images from Canva for Educational Purposes</p>
+        <p>Research Images taken by Student Researcher</p>
+      </div>
+    </footer>
   </body>
 </html>

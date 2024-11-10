@@ -2,7 +2,7 @@
 Temperature values are differences from the mean of 14 deg-C.*/
 
 async function getData() {
-    const response = await fetch("../data/global-mean-temp.csv"); //.. moves up 1 folder level
+    const response = await fetch("../data/plant-data.csv"); //.. moves up 1 folder level
     const data = await response.text(); // CSV in text format
   
     //console.log(data);
@@ -44,8 +44,20 @@ async function createChart() {
             label: 'Average Change in Plant Length (cm)',
             data: data.avgChanges,
             fill: false,
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
+            backgroundColor: [
+                "rgba(66, 133, 244, 0.2)",
+                "rgba(234, 67, 53, 0.2)",
+                "rgba(251, 188, 4, 0.2)",
+                "rgba(52, 168, 83, 0.2)",
+                "rgba(255, 109, 1, 0.2)"
+            ],
+            borderColor: [
+                "rgba(66, 133, 244, 1)",
+                "rgba(234, 67, 53, 1)",
+                "rgba(251, 188, 4, 1)",
+                "rgba(52, 168, 83, 1)",
+                "rgba(255, 109, 1, 1)"
+            ],
             borderWidth: 1,
           }
         ]
