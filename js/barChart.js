@@ -5,18 +5,10 @@ async function getData() {
     const response = await fetch("../data/plant-data.csv"); //.. moves up 1 folder level
     const data = await response.text(); // CSV in text format
   
-    //console.log(data);
-  
     const conditions = []; // x-axis labels
     const avgChanges = []; // y-axis average changes
   
-    // \n - new line character
-    // split('\n') - separate the table into an array of individual rows
-    // slice(start, end) - return a new array starting at index start up to but not including 'end'
-  
     const table = data.split("\n").slice(1); // Start from first index and go all the way to the end
-  
-    //console.log(table);
   
     table.forEach((row) => {
       const columns = row.split(","); // split row into columns using commas
@@ -25,8 +17,6 @@ async function getData() {
   
       const avgChange = parseFloat(columns[1]); // average change value
       avgChanges.push(avgChange);
-  
-      //console.log(condition, avgChange);
     });
     return { conditions, avgChanges }; // return multiple values as an object
 }
@@ -34,34 +24,49 @@ async function getData() {
 async function createChart() {
     const data = await getData(); // wait for getData() to send data for formatted chart
     const barChart = document.getElementById("barChart");
-  
+
     const myChart = new Chart(barChart, {
-      type: "bar",
-      data: {
-        labels: data.conditions, // x-axis labels
-        datasets: [
-          {
-            label: 'Average Change in Plant Length (cm)',
-            data: data.avgChanges,
-            fill: false,
-            backgroundColor: [
-                "rgba(66, 133, 244, 0.2)",
-                "rgba(234, 67, 53, 0.2)",
-                "rgba(251, 188, 4, 0.2)",
-                "rgba(52, 168, 83, 0.2)",
-                "rgba(255, 109, 1, 0.2)"
-            ],
-            borderColor: [
-                "rgba(66, 133, 244, 1)",
-                "rgba(234, 67, 53, 1)",
-                "rgba(251, 188, 4, 1)",
-                "rgba(52, 168, 83, 1)",
-                "rgba(255, 109, 1, 1)"
-            ],
-            borderWidth: 1,
-          }
-        ]
-      },
+        type: "bar",
+        data: {
+          labels: data.conditions,
+          datasets: [
+            {
+              label: data.conditions[0],
+              data: [data.avgChanges[0], null, null, null, null], // Only first value shown
+              backgroundColor: "rgba(66, 133, 244, 0.2)",
+              borderColor: "rgba(66, 133, 244, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: data.conditions[1],
+              data: [null, data.avgChanges[1], null, null, null], // Only second value shown
+              backgroundColor: "rgba(234, 67, 53, 0.2)",
+              borderColor: "rgba(234, 67, 53, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: data.conditions[2],
+              data: [null, null, data.avgChanges[2], null, null], // Only third value shown
+              backgroundColor: "rgba(251, 188, 4, 0.2)",
+              borderColor: "rgba(251, 188, 4, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: data.conditions[3],
+              data: [null, null, null, data.avgChanges[3], null], // Only fourth value shown
+              backgroundColor: "rgba(52, 168, 83, 0.2)",
+              borderColor: "rgba(52, 168, 83, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: data.conditions[4],
+              data: [null, null, null, null, data.avgChanges[4]], // Only fifth value shown
+              backgroundColor: "rgba(255, 109, 1, 0.2)",
+              borderColor: "rgba(255, 109, 1, 1)",
+              borderWidth: 1,
+            }
+          ]
+        },
       options: {
           responsive: true,            // re-size based on screen size
           maintainAspectRatio: false,
@@ -69,7 +74,7 @@ async function createChart() {
               x: {
                   title: {
                       display: true,
-                      text: 'Groups',   // x-axis title
+                      text: 'Condition',   // x-axis title
                       font: {         // font properties
                           size: 14
                       },
@@ -89,7 +94,7 @@ async function createChart() {
                       text: 'Average Change in Plant Length (cm)',   // y-axis title
                       font: {         // font properties
                           size: 14
-                      }
+                      },
                   },
                   ticks: {
                       font: {
@@ -104,7 +109,7 @@ async function createChart() {
           plugins: {      // Display options for title and legend
               title: {
                   display:true,     // display chart title
-                  text: 'Average Change in Plant Lengths (cm)',
+                  text: 'Average Change in Plant Length by Condition',
                   font: {
                       size: 24,
                   },
