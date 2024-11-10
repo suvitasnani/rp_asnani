@@ -93,7 +93,7 @@ async function createChart() {
           plugins: {      // Display options for title and legend
               title: {
                   display:true,     // display chart title
-                  text: 'Average Change in Plant Length by Condition',
+                  text: 'Average Change in Plant Lengths (cm)',
                   font: {
                       size: 24,
                   },
