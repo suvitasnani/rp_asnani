@@ -58,8 +58,10 @@ async function createChart() {
                       display: true,
                       text: 'Condition',   // x-axis title
                       font: {         // font properties
-                          size: 14
+                          size: 18,
+                          weight: 'bold'
                       },
+                      color: '#black',
                   },
                   ticks: {
                       font: {
@@ -69,16 +71,16 @@ async function createChart() {
                   grid: {
                       color: '#6c767e'
                   },
-                  barPercentage: 1.0, // Make bars fill the category width
-                  categoryPercentage: 1.0 // Make categories fill the available space
               },
               y: {
                   title: {
                       display: true,
                       text: 'Average Change in Plant Length (cm)',   // y-axis title
                       font: {         // font properties
-                          size: 14
+                          size: 18,
+                          weight: 'bold',
                       },
+                      color: '#black',
                   },
                   ticks: {
                       font: {
@@ -104,8 +106,7 @@ async function createChart() {
                   }
               },
               legend: {
-                  align: 'start',
-                  position: 'bottom',
+                  display: false
               }
           }
       }
