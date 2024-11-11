@@ -2,7 +2,7 @@
 Temperature values are differences from the mean of 14 deg-C.*/
 
 async function getData() {
-    const response = await fetch("data/plant-data.csv"); //.. moves up 1 folder level
+    const response = await fetch("data/plant_data.csv"); //.. moves up 1 folder level
     const data = await response.text(); // CSV in text format
   
     const conditions = []; // x-axis labels
